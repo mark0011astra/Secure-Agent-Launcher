@@ -5,7 +5,8 @@
 
 ![Secure Agent Launcher](image.png)
 
-Secure Agent Launcher is a macOS tool that blocks risky AI agent CLI runs (`codex`, `claude`, `gemini`, etc.) before they can touch protected paths.
+Secure Agent Launcher is a macOS guard tool for AI agent CLIs (`codex`, `claude`, `gemini`, etc.).  
+It blocks execution before access to protected paths such as `~/.ssh`, `~/.aws`, and `~/Library/Keychains`, then records the result in an audit log.
 
 日本語版: [README.ja.md](README.ja.md)
 

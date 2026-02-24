@@ -1,9 +1,7 @@
 # Secure Agent Launcher
 
-[![Tests](https://github.com/mark0011astra/Secure-Agent-Launcher/actions/workflows/check.yml/badge.svg)](https://github.com/mark0011astra/Secure-Agent-Launcher/actions/workflows/check.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-Secure Agent Launcher は、`codex`、`claude`、`gemini` などの AI エージェント CLI を実行するときに、機密パスへのアクセスを実行前に止める macOS 向けツールです。
+Secure Agent Launcher は、`codex`、`claude`、`gemini` などの AI エージェント CLI 向けの macOS ガードツールです。  
+`~/.ssh`、`~/.aws`、`~/Library/Keychains` などの保護パスに触れる実行を開始前に止め、結果を監査ログへ記録します。
 
 English README: [README.md](README.md)
 
@@ -19,7 +17,8 @@ English README: [README.md](README.md)
 1. インストール
 
 ```bash
-brew install mark0011astra/Secure-Agent-Launcher/secure-agent-locker
+curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-from-github.sh \
+  | bash -s -- --repo OWNER/REPO
 ```
 
 2. GUI 起動
@@ -36,28 +35,14 @@ secure-agent-locker gui
 
 - macOS
 - `bash`、`curl`、`tar`
-- Homebrew（Homebrewで導入する場合）
 
 ## インストール
 
-### Homebrew でインストール（推奨）
+### GitHub Release からインストール（推奨）
 
 ```bash
-brew install mark0011astra/Secure-Agent-Launcher/secure-agent-locker
-```
-
-先に tap して導入する場合:
-
-```bash
-brew tap mark0011astra/Secure-Agent-Launcher
-brew install secure-agent-locker
-```
-
-### GitHub Release からインストール
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/mark0011astra/Secure-Agent-Launcher/main/scripts/install-from-github.sh \
-  | bash -s -- --repo mark0011astra/Secure-Agent-Launcher
+curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-from-github.sh \
+  | bash -s -- --repo OWNER/REPO
 ```
 
 インストール先:
@@ -70,7 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/mark0011astra/Secure-Agent-Launcher
 特定のタグを指定してインストールする場合:
 
 ```bash
-bash scripts/install-from-github.sh --repo mark0011astra/Secure-Agent-Launcher --tag v0.1.0
+bash scripts/install-from-github.sh --repo OWNER/REPO --tag v0.1.0
 ```
 
 ### ソースからローカルインストールする場合（Python が必要）
@@ -89,12 +74,6 @@ secure-agent-locker-uninstall
 
 ```bash
 secure-agent-locker-uninstall --purge-config
-```
-
-Homebrew で導入した場合:
-
-```bash
-brew uninstall secure-agent-locker
 ```
 
 ## ファイル配置
