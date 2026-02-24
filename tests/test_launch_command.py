@@ -48,7 +48,7 @@ class LaunchCommandTestCase(unittest.TestCase):
             ],
         )
 
-    @mock.patch("agent_locker.launch_command.shutil.which", return_value="/usr/local/bin/agent-locker")
+    @mock.patch("agent_locker.launch_command.shutil.which", return_value="/usr/local/bin/secure-agent-locker")
     def test_build_launcher_command_line_prefers_installed_command(self, _mock_which: mock.Mock) -> None:
         line = build_launcher_command_line(
             policy_path=Path("/tmp/policy.json"),
@@ -58,7 +58,7 @@ class LaunchCommandTestCase(unittest.TestCase):
         )
         parsed = shlex.split(line)
 
-        self.assertEqual(parsed[0], "/usr/local/bin/agent-locker")
+        self.assertEqual(parsed[0], "/usr/local/bin/secure-agent-locker")
         self.assertEqual(parsed[1:7], ["--policy", "/tmp/policy.json", "--audit-log", "/tmp/audit.log", "run", "--execute"])
 
     def test_generated_command_uses_latest_policy_at_execution_time(self) -> None:

@@ -3,7 +3,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Install agent-locker macOS binary from GitHub Releases.
+Install secure-agent-locker macOS binary from GitHub Releases.
 
 Usage:
   ./scripts/install-from-github.sh --repo OWNER/REPO [--tag TAG]
@@ -104,32 +104,32 @@ if ! curl -fsSL -H "Accept: application/vnd.github+json" "${RELEASE_URL}" -o "${
 fi
 
 ASSET_URL="$(
-  grep -Eo "https://[^\"]*agent-locker-macos-${ASSET_ARCH}\\.tar\\.gz" "${RELEASE_JSON}" | head -n 1 || true
+  grep -Eo "https://[^\"]*secure-agent-locker-macos-${ASSET_ARCH}\\.tar\\.gz" "${RELEASE_JSON}" | head -n 1 || true
 )"
 if [[ -z "${ASSET_URL}" ]]; then
-  echo "Release asset agent-locker-macos-${ASSET_ARCH}.tar.gz was not found." >&2
+  echo "Release asset secure-agent-locker-macos-${ASSET_ARCH}.tar.gz was not found." >&2
   exit 1
 fi
 
-ARCHIVE_PATH="${WORK_DIR}/agent-locker.tar.gz"
+ARCHIVE_PATH="${WORK_DIR}/secure-agent-locker.tar.gz"
 curl -fL "${ASSET_URL}" -o "${ARCHIVE_PATH}"
 
 EXTRACT_DIR="${WORK_DIR}/extract"
 mkdir -p "${EXTRACT_DIR}"
 tar -xzf "${ARCHIVE_PATH}" -C "${EXTRACT_DIR}"
 
-TARGET_PAYLOAD="${EXTRACT_DIR}/agent-locker"
-TARGET_UNINSTALL_PAYLOAD="${EXTRACT_DIR}/agent-locker-uninstall"
+TARGET_PAYLOAD="${EXTRACT_DIR}/secure-agent-locker"
+TARGET_UNINSTALL_PAYLOAD="${EXTRACT_DIR}/secure-agent-locker-uninstall"
 if [[ ! -f "${TARGET_PAYLOAD}" || ! -f "${TARGET_UNINSTALL_PAYLOAD}" ]]; then
   echo "Invalid release archive format." >&2
   exit 1
 fi
 
-INSTALL_ROOT="${HOME}/.agent-locker"
+INSTALL_ROOT="${HOME}/.secure-agent-locker"
 BIN_DIR="${HOME}/.local/bin"
-TARGET_BIN="${BIN_DIR}/agent-locker"
+TARGET_BIN="${BIN_DIR}/secure-agent-locker"
 UNINSTALL_SCRIPT="${INSTALL_ROOT}/uninstall.sh"
-UNINSTALL_BIN="${BIN_DIR}/agent-locker-uninstall"
+UNINSTALL_BIN="${BIN_DIR}/secure-agent-locker-uninstall"
 
 mkdir -p "${INSTALL_ROOT}" "${BIN_DIR}"
 install -m 0755 "${TARGET_PAYLOAD}" "${TARGET_BIN}"
@@ -138,6 +138,6 @@ ln -sf "${UNINSTALL_SCRIPT}" "${UNINSTALL_BIN}"
 
 "${TARGET_BIN}" init
 
-echo "Installed agent-locker at ${TARGET_BIN}"
+echo "Installed secure-agent-locker at ${TARGET_BIN}"
 echo "Uninstall with: ${UNINSTALL_BIN} [--purge-config]"
 echo "If needed, add ${BIN_DIR} to your PATH."

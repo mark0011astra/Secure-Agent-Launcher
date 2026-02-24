@@ -221,7 +221,7 @@ FONT_TITLE = 24
 FONT_SECTION = 16
 FONT_BODY = 13
 FONT_META = 12
-ONBOARDING_STATE_PATH = Path.home() / ".config" / "agent-locker" / "ui_state.json"
+ONBOARDING_STATE_PATH = Path.home() / ".config" / "secure-agent-locker" / "ui_state.json"
 CATEGORY_ORDER = [
     "all",
     "credentials",
@@ -573,5 +573,4 @@ TEXTS = {
         ),
     },
 }
-
 

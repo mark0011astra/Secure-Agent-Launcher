@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-fro
 2. GUI 起動
 
 ```bash
-agent-locker gui
+secure-agent-locker gui
 ```
 
 3. 画面でパスを追加し、`Generate Run Command` で生成されたコマンドをターミナルで実行
@@ -46,8 +46,8 @@ curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-fro
 
 インストール先:
 
-- `~/.local/bin/agent-locker`
-- `~/.local/bin/agent-locker-uninstall`
+- `~/.local/bin/secure-agent-locker`
+- `~/.local/bin/secure-agent-locker-uninstall`
 
 必要に応じて `~/.local/bin` を `PATH` に追加してください。
 
@@ -66,26 +66,26 @@ bash scripts/install-from-github.sh --repo OWNER/REPO --tag v0.1.0
 ## アンインストール
 
 ```bash
-agent-locker-uninstall
+secure-agent-locker-uninstall
 ```
 
 ポリシーと監査ログも削除する場合:
 
 ```bash
-agent-locker-uninstall --purge-config
+secure-agent-locker-uninstall --purge-config
 ```
 
 ## ファイル配置
 
-- Policy JSON: `~/.config/agent-locker/policy.json`
-- Audit log: `~/.local/state/agent-locker/audit.log`
-- Audit lock file: `~/.local/state/agent-locker/audit.log.lock`
+- Policy JSON: `~/.config/secure-agent-locker/policy.json`
+- Audit log: `~/.local/state/secure-agent-locker/audit.log`
+- Audit lock file: `~/.local/state/secure-agent-locker/audit.log.lock`
 - ローテート済みログ: `audit.log.1` から `audit.log.3`（約2MBでローテーション開始）
 
 ## クイックスタート（GUI）
 
 ```bash
-agent-locker gui
+secure-agent-locker gui
 ```
 
 1. 左側の `AI Access Deny List` に保護したいパスを追加します。
@@ -96,7 +96,7 @@ agent-locker gui
 補足:
 
 - GUI は外部ターミナルを自動起動しません。
-- 生成コマンドは、利用可能な場合は `agent-locker` コマンドを使用します。
+- 生成コマンドは、利用可能な場合は `secure-agent-locker` コマンドを使用します。
 - 事前チェックでブロック対象パスが検出された場合、コマンド生成は停止します。
 - GUI は固定サイズで動作し、フルスクリーン操作は無効化されます。
 
@@ -105,42 +105,42 @@ agent-locker gui
 デフォルトポリシーを初期化:
 
 ```bash
-agent-locker init
+secure-agent-locker init
 ```
 
 現在のポリシー JSON を表示:
 
 ```bash
-agent-locker show
+secure-agent-locker show
 ```
 
 deny paths の管理:
 
 ```bash
-agent-locker policy list
-agent-locker policy add ~/.ssh ~/.aws
-agent-locker policy remove ~/.aws
-agent-locker policy status
-agent-locker policy on
-agent-locker policy off
+secure-agent-locker policy list
+secure-agent-locker policy add ~/.ssh ~/.aws
+secure-agent-locker policy remove ~/.aws
+secure-agent-locker policy status
+secure-agent-locker policy on
+secure-agent-locker policy off
 ```
 
 ドライラン（チェックのみ）:
 
 ```bash
-agent-locker run -- codex
+secure-agent-locker run -- codex
 ```
 
 実行:
 
 ```bash
-agent-locker run --execute -- codex
+secure-agent-locker run --execute -- codex
 ```
 
 作業ディレクトリを明示する場合:
 
 ```bash
-agent-locker run --execute --cwd ~/work/project -- codex --model gpt-5
+secure-agent-locker run --execute --cwd ~/work/project -- codex --model gpt-5
 ```
 
 ## 動作仕様
@@ -156,8 +156,8 @@ agent-locker run --execute --cwd ~/work/project -- codex --model gpt-5
 
 GitHub でタグ付きリリースを公開すると、`.github/workflows/release-macos.yml` が次のアセットを自動生成して添付します。
 
-- `agent-locker-macos-arm64.tar.gz`
-- `agent-locker-macos-x64.tar.gz`
+- `secure-agent-locker-macos-arm64.tar.gz`
+- `secure-agent-locker-macos-x64.tar.gz`
 
 利用者は `scripts/install-from-github.sh` を使って、Python なしで導入できます。
 

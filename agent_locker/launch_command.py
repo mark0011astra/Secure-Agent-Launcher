@@ -10,6 +10,10 @@ def _launcher_prefix() -> list[str]:
     if getattr(sys, "frozen", False):
         return [sys.executable]
 
+    launcher = shutil.which("secure-agent-locker")
+    if launcher:
+        return [launcher]
+
     launcher = shutil.which("agent-locker")
     if launcher:
         return [launcher]

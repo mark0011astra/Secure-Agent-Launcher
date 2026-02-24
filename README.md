@@ -30,7 +30,7 @@ curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-fro
 2. Open GUI:
 
 ```bash
-agent-locker gui
+secure-agent-locker gui
 ```
 
 3. Add paths in the UI, click `Generate Run Command`, and run the generated line in your terminal.
@@ -48,8 +48,8 @@ curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-fro
 
 Installed paths:
 
-- `~/.local/bin/agent-locker`
-- `~/.local/bin/agent-locker-uninstall`
+- `~/.local/bin/secure-agent-locker`
+- `~/.local/bin/secure-agent-locker-uninstall`
 
 If needed, add `~/.local/bin` to your `PATH`.
 
@@ -68,26 +68,26 @@ bash scripts/install-from-github.sh --repo OWNER/REPO --tag v0.1.0
 ## Uninstall
 
 ```bash
-agent-locker-uninstall
+secure-agent-locker-uninstall
 ```
 
 To remove policy and audit logs too:
 
 ```bash
-agent-locker-uninstall --purge-config
+secure-agent-locker-uninstall --purge-config
 ```
 
 ## Files
 
-- Policy JSON: `~/.config/agent-locker/policy.json`
-- Audit log: `~/.local/state/agent-locker/audit.log`
-- Audit lock file: `~/.local/state/agent-locker/audit.log.lock`
+- Policy JSON: `~/.config/secure-agent-locker/policy.json`
+- Audit log: `~/.local/state/secure-agent-locker/audit.log`
+- Audit lock file: `~/.local/state/secure-agent-locker/audit.log.lock`
 - Rotated audit logs: `audit.log.1` to `audit.log.3` (rotation starts at ~2MB)
 
 ## Quick Start (GUI)
 
 ```bash
-agent-locker gui
+secure-agent-locker gui
 ```
 
 1. Add paths to protect in `AI Access Deny List` (left panel).
@@ -98,7 +98,7 @@ agent-locker gui
 Notes:
 
 - The GUI does not auto-launch an external terminal.
-- The generated command uses the installed `agent-locker` launcher when available.
+- The generated command uses the installed `secure-agent-locker` launcher when available.
 - If the preflight check detects a blocked path, command generation is stopped.
 - The GUI runs in fixed-size window mode and blocks fullscreen shortcuts.
 
@@ -107,42 +107,42 @@ Notes:
 Initialize default policy:
 
 ```bash
-agent-locker init
+secure-agent-locker init
 ```
 
 Show current policy JSON:
 
 ```bash
-agent-locker show
+secure-agent-locker show
 ```
 
 Manage deny paths:
 
 ```bash
-agent-locker policy list
-agent-locker policy add ~/.ssh ~/.aws
-agent-locker policy remove ~/.aws
-agent-locker policy status
-agent-locker policy on
-agent-locker policy off
+secure-agent-locker policy list
+secure-agent-locker policy add ~/.ssh ~/.aws
+secure-agent-locker policy remove ~/.aws
+secure-agent-locker policy status
+secure-agent-locker policy on
+secure-agent-locker policy off
 ```
 
 Dry-run (check only):
 
 ```bash
-agent-locker run -- codex
+secure-agent-locker run -- codex
 ```
 
 Actual execution:
 
 ```bash
-agent-locker run --execute -- codex
+secure-agent-locker run --execute -- codex
 ```
 
 With explicit working directory:
 
 ```bash
-agent-locker run --execute --cwd ~/work/project -- codex --model gpt-5
+secure-agent-locker run --execute --cwd ~/work/project -- codex --model gpt-5
 ```
 
 ## Behavior Summary
@@ -159,8 +159,8 @@ agent-locker run --execute --cwd ~/work/project -- codex --model gpt-5
 Tag and publish a release on GitHub.  
 The workflow at `.github/workflows/release-macos.yml` automatically builds and uploads:
 
-- `agent-locker-macos-arm64.tar.gz`
-- `agent-locker-macos-x64.tar.gz`
+- `secure-agent-locker-macos-arm64.tar.gz`
+- `secure-agent-locker-macos-x64.tar.gz`
 
 Users can install the latest release binary with `scripts/install-from-github.sh` and do not need Python.
 

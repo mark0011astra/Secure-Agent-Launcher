@@ -23,7 +23,7 @@ def positive_timeout(value: str) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="agent-locker", description="Safety-first launcher for agent CLIs.")
+    parser = argparse.ArgumentParser(prog="secure-agent-locker", description="Safety-first launcher for agent CLIs.")
     parser.add_argument("--policy", type=Path, default=default_policy_path(), help="Policy JSON path.")
     parser.add_argument("--audit-log", type=Path, default=default_audit_log_path(), help="Audit log path.")
 
@@ -86,7 +86,7 @@ def main(argv: list[str] | None = None) -> int:
         if command and command[0] == "--":
             command = command[1:]
         if not command:
-            print("Command is required. Example: agent-locker run -- codex", file=sys.stderr)
+            print("Command is required. Example: secure-agent-locker run -- codex", file=sys.stderr)
             return 2
 
         cwd = normalize_path(args.cwd)

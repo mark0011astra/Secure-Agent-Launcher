@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-APP_NAME = "agent-locker"
+APP_NAME = "secure-agent-locker"
 DEFAULT_DENY_PATHS = [
     "~/.ssh",
     "~/.aws",

@@ -30,17 +30,17 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install .
           python -m pip install pyinstaller
-          pyinstaller --onefile --name agent-locker agent_locker/cli.py
+          pyinstaller --onefile --name secure-agent-locker agent_locker/cli.py
 
       - name: Package archive
         run: |
           mkdir -p package
-          cp dist/agent-locker package/agent-locker
-          cp scripts/uninstall.sh package/agent-locker-uninstall
-          chmod +x package/agent-locker package/agent-locker-uninstall
-          tar -czf "agent-locker-macos-${{ matrix.arch }}.tar.gz" -C package .
+          cp dist/secure-agent-locker package/secure-agent-locker
+          cp scripts/uninstall.sh package/secure-agent-locker-uninstall
+          chmod +x package/secure-agent-locker package/secure-agent-locker-uninstall
+          tar -czf "secure-agent-locker-macos-${{ matrix.arch }}.tar.gz" -C package .
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v2
         with:
-          files: agent-locker-macos-${{ matrix.arch }}.tar.gz
+          files: secure-agent-locker-macos-${{ matrix.arch }}.tar.gz
