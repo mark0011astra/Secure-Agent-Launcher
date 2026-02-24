@@ -1,5 +1,8 @@
 # Secure Agent Launcher
 
+[![Tests](https://github.com/mark0011astra/Secure-Agent-Launcher/actions/workflows/check.yml/badge.svg)](https://github.com/mark0011astra/Secure-Agent-Launcher/actions/workflows/check.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 ![Secure Agent Launcher](image.png)
 
 Secure Agent Launcher is a macOS tool that blocks risky AI agent CLI runs (`codex`, `claude`, `gemini`, etc.) before they can touch protected paths.
@@ -17,14 +20,14 @@ Secure Agent Launcher is a macOS tool that blocks risky AI agent CLI runs (`code
 
 - macOS
 - `bash`, `curl`, and `tar`
+- Homebrew (only for Homebrew install)
 
 ## First Run In 3 Steps
 
 1. Install:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-from-github.sh \
-  | bash -s -- --repo OWNER/REPO
+brew install mark0011astra/Secure-Agent-Launcher/secure-agent-locker
 ```
 
 2. Open GUI:
@@ -39,11 +42,24 @@ If a command is blocked, you will see `blocked_path:` in output.
 
 ## Install
 
-### Quick install from GitHub Release (recommended)
+### Homebrew install (recommended)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/OWNER/REPO/main/scripts/install-from-github.sh \
-  | bash -s -- --repo OWNER/REPO
+brew install mark0011astra/Secure-Agent-Launcher/secure-agent-locker
+```
+
+Or tap once and install:
+
+```bash
+brew tap mark0011astra/Secure-Agent-Launcher
+brew install secure-agent-locker
+```
+
+### Quick install from GitHub Release
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mark0011astra/Secure-Agent-Launcher/main/scripts/install-from-github.sh \
+  | bash -s -- --repo mark0011astra/Secure-Agent-Launcher
 ```
 
 Installed paths:
@@ -56,7 +72,7 @@ If needed, add `~/.local/bin` to your `PATH`.
 Install a specific tag:
 
 ```bash
-bash scripts/install-from-github.sh --repo OWNER/REPO --tag v0.1.0
+bash scripts/install-from-github.sh --repo mark0011astra/Secure-Agent-Launcher --tag v0.1.0
 ```
 
 ### Local install from source (Python required)
@@ -75,6 +91,12 @@ To remove policy and audit logs too:
 
 ```bash
 secure-agent-locker-uninstall --purge-config
+```
+
+For Homebrew installs:
+
+```bash
+brew uninstall secure-agent-locker
 ```
 
 ## Files
