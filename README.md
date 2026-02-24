@@ -177,3 +177,7 @@ pip install -e .
 ```bash
 python3 -m unittest discover -s tests -v
 ```
+
+## License
+
+MIT License. See [LICENSE](LICENSE).

@@ -174,3 +174,7 @@ pip install -e .
 ```bash
 python3 -m unittest discover -s tests -v
 ```
+
+## ライセンス
+
+MIT License。詳細は [LICENSE](LICENSE) を参照してください。
